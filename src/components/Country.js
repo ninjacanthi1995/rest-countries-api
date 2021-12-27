@@ -1,5 +1,5 @@
 import '../App.scss';
-import {Link, useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 
 export default function Country() {
@@ -8,8 +8,7 @@ export default function Country() {
     const [languages, setLanguages] = useState([])
     const [borders, setBorders] = useState([])
     let { code } = useParams();
-
-    console.log(borders)
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch(`https://restcountries.com/v2/alpha/${code}`)
@@ -18,7 +17,7 @@ export default function Country() {
                 setCountry(data)
                 setCurrencies(data.currencies.map(currency => currency.name))
                 setLanguages(data.languages.map(lang => lang.name))
-                //setBorders(data.borders)
+
                 fetch(`https://restcountries.com/v2/alpha?codes=${data.borders.join(',')}`)
                     .then(res => res.json())
                     .then(bordersData => setBorders(bordersData))
@@ -26,28 +25,39 @@ export default function Country() {
     }, [code])
 
     return (
-        <div className="country">
-            <button>Back</button>
-            <img src={country.flag} />
-            <h1>{country.name}</h1>
-            <p><span>Native Name:</span> {country.nativeName}</p>
-            <p><span>Population:</span> {country.population}</p>
-            <p><span>Region:</span> {country.region}</p>
-            <p><span>Sub Region:</span> {country.subregion}</p>
-            <p><span>Capital:</span> {country.capital}</p>
-            <br/>
-            <p><span>Top Leval Domain:</span> {country.topLevelDomain}</p>
-            <p><span>Currencies:</span> {currencies.join(', ')}</p>
-            <p><span>Languages:</span> {languages.join(', ')}</p>
-            <br/>
-            <h2>Border Countries</h2>
-            {borders.map(border => (
-                <Link key={`${border.alpha3Code}-link`} to={`/${border.alpha3Code}`}><button>{border.name}</button></Link>
-            ))}
+        <div className="country flex-col">
+            <button onClick={() => navigate(-1)}>Back</button>
+
+            <main className="flex-col">
+                <img src={country.flag} alt="flag"/>
+
+                <section className="flex-col">
+                    <h1>{country.name}</h1>
+
+                    <div className="flex-col">
+                        <div>
+                            <p><span>Native Name:</span> {country.nativeName}</p>
+                            <p><span>Population:</span> {country.population}</p>
+                            <p><span>Region:</span> {country.region}</p>
+                            <p><span>Sub Region:</span> {country.subregion}</p>
+                            <p><span>Capital:</span> {country.capital}</p>
+                        </div>
+
+                        <div>
+                            <p><span>Top Level Domain:</span> {country.topLevelDomain}</p>
+                            <p><span>Currencies:</span> {currencies.join(', ')}</p>
+                            <p><span>Languages:</span> {languages.join(', ')}</p>
+                        </div>
+                    </div>
+
+                    <div className="flex-col borders-container">
+                        <h3>Border Countries:</h3>
+                        {borders.map(border => (
+                            <button onClick={() => navigate(`/${border.alpha3Code}`)}>{border.name}</button>
+                        ))}
+                    </div>
+                </section>
+            </main>
         </div>
     );
-
-    /*{borders.map(border => (
-        <Link key={`${border}-link`} to={`/${border}`}><button>{border}</button></Link>
-    ))}*/
 }

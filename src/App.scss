@@ -1,8 +1,14 @@
 .App {
+  min-height: 100vh;
+
   header {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 1rem 2rem;
+
+    h4 {
+      font-weight: bold;
+    }
 
     div {
       align-items: center;
@@ -17,6 +23,10 @@
     align-items: flex-start;
 
     div {
+      width: 100%;
+      gap: 2rem;
+      align-items: flex-start;
+
       input {
         width: 100%;
       }
@@ -29,7 +39,7 @@
       gap: 2rem;
 
       div {
-        max-width: 300px;
+        max-width: 280px;
 
         img {
           width: 100%;
@@ -40,6 +50,129 @@
         div {
           background-color: white;
           padding: 1rem;
+        }
+      }
+    }
+  }
+
+  .country {
+    padding: 2rem 1.5rem;
+    background-color: aliceblue;
+    align-items: center;
+    gap: 3rem;
+
+    button {
+      align-self: flex-start;
+    }
+
+    main {
+      gap: 2rem;
+
+      section {
+        gap: 1rem;
+
+        div {
+          gap: 1rem;
+
+          div {
+            flex-wrap: wrap;
+
+            p {
+              span {
+                font-weight: bold;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  .App {
+    header {
+      padding-inline: 4rem;
+
+      h4 {
+      }
+
+      div {
+      }
+    }
+
+    .home {
+      padding: 2rem 4rem;
+
+      div {
+        flex-direction: row;
+        justify-content: space-between;
+
+        input {
+          width: 40%;
+        }
+      }
+
+      section {
+        justify-content: space-between;
+
+        div {
+
+          img {
+          }
+
+          div {
+          }
+        }
+      }
+    }
+
+    .country {
+      //padding: 2rem 1.5rem;
+      //background-color: aliceblue;
+      //align-items: center;
+      //gap: 3rem;
+      padding: 2rem 4rem;
+
+      button {
+        align-self: flex-start;
+      }
+
+      main {
+        //gap: 4rem;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        img {
+          width: 50%;
+        }
+
+        section {
+          //gap: 1rem;
+          justify-content: space-around;
+
+          div {
+            //gap: 4rem;
+            flex-direction: row;
+            justify-content: space-between;
+
+            div {
+              flex-wrap: wrap;
+
+              p {
+                span {
+                  font-weight: bold;
+                }
+              }
+            }
+          }
+
+          div.borders-container {
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+          }
         }
       }
     }

@@ -1,21 +1,22 @@
 import '../App.scss';
 import {useEffect, useState} from "react";
-import {Link} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 function Home() {
     const [countriesData, setCountriesData] = useState([])
     const [filteredCountriesData, setFilteredCountriesData] = useState([])
+    const navigate = useNavigate();
 
     let countries = filteredCountriesData.map(country => (
-        <Link key={country.alpha3Code} to={`/${country.alpha3Code}`}>
-            <img src={country.flag} />
+        <div onClick={() => navigate(`/${country.alpha3Code}`)}>
+            <img src={country.flag} alt="flag" />
             <div>
                 <h2>{country.name}</h2>
                 <p><span>Population:</span> {country.population}</p>
                 <p><span>Region:</span> {country.region}</p>
                 <p><span>Capital:</span> {country.capital}</p>
             </div>
-        </Link>
+        </div>
     ))
 
     useEffect(() => {
@@ -29,7 +30,7 @@ function Home() {
 
     return (
         <div className="home flex-col">
-            <div>
+            <div className="flex-col">
                 <input />
 
                 <select>
