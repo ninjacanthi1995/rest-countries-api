@@ -27,7 +27,7 @@ function Home() {
 
     const filter = (e) => {
         let region = e.target.value;
-        setFilteredCountriesData(countriesData.filter(country => country.region === region))
+        if (region !== 'all') setFilteredCountriesData(countriesData.filter(country => country.region === region))
     }
 
     useEffect(() => {
@@ -47,7 +47,7 @@ function Home() {
                 </form>
 
                 <select onChange={filter}>
-                    <option>Filter by Region</option>
+                    <option value="all">Filter by Region</option>
                     <option value="Africa">Africa</option>
                     <option value="Americas">America</option>
                     <option value="Asia">Asia</option>

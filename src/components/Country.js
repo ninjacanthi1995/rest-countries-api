@@ -27,7 +27,7 @@ export default function Country() {
     return (
         <div className="country flex-col">
             <button className="flex" onClick={() => navigate(-1)}>
-                <img src="./back.svg" />
+                <img src="./arrow_back_black.svg" id="back-icon" />
                 Back
             </button>
 
