@@ -5,7 +5,7 @@ import Country from "./components/Country";
 
 function App() {
     return (
-        <div className="App">
+        <div className="App flex-col">
             <header className="flex">
                 <h4>Where in the world?</h4>
                 <div className="flex">

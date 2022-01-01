@@ -26,9 +26,12 @@ export default function Country() {
 
     return (
         <div className="country flex-col">
-            <button onClick={() => navigate(-1)}>Back</button>
+            <button className="flex" onClick={() => navigate(-1)}>
+                <img src="./back.svg" />
+                Back
+            </button>
 
-            <main className="flex-col">
+            <main className="flex">
                 <img src={country.flag} alt="flag"/>
 
                 <section className="flex-col">
@@ -50,8 +53,8 @@ export default function Country() {
                         </div>
                     </div>
 
-                    <div className="flex-col borders-container">
-                        <h3>Border Countries:</h3>
+                    <h3>Border Countries:</h3>
+                    <div className="flex borders-container">
                         {borders.map(border => (
                             <button onClick={() => navigate(`/${border.alpha3Code}`)}>{border.name}</button>
                         ))}

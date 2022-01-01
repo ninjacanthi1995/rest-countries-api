@@ -19,6 +19,17 @@ function Home() {
         </div>
     ))
 
+    const search = (e) => {
+        e.preventDefault();
+        let value = document.getElementById("search-input").value.toLowerCase();
+        setFilteredCountriesData(countriesData.filter(country => country.name.toLowerCase().includes(value)))
+    }
+
+    const filter = (e) => {
+        let region = e.target.value;
+        setFilteredCountriesData(countriesData.filter(country => country.region === region))
+    }
+
     useEffect(() => {
         fetch('https://restcountries.com/v2/all')
             .then(response => response.json())
@@ -31,10 +42,17 @@ function Home() {
     return (
         <div className="home flex-col">
             <div className="flex-col">
-                <input />
+                <form onSubmit={search}>
+                    <input id="search-input" type="search" placeholder="&#61442;    Search for a country..." />
+                </form>
 
-                <select>
+                <select onChange={filter}>
                     <option>Filter by Region</option>
+                    <option value="Africa">Africa</option>
+                    <option value="Americas">America</option>
+                    <option value="Asia">Asia</option>
+                    <option value="Europe">Europe</option>
+                    <option value="Oceania">Oceania</option>
                 </select>
             </div>
 
