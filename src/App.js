@@ -21,10 +21,10 @@ function App() {
     }
 
     return (
-        <div className="App flex-col">
+        <div className="App flex-col" role="main">
             <header className="flex">
-                <h4>Where in the world?</h4>
-                <div className="flex" onClick={toggleDarkMode}>
+                <h1>Where in the world?</h1>
+                <div className="flex" onClick={toggleDarkMode} role="dark-mode">
                     <img src='./dark_mode_black.svg' alt="dark mode" id="dark-mode-icon" />
                     <p>Dark Mode</p>
                 </div>

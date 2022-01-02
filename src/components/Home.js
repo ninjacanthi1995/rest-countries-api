@@ -40,13 +40,13 @@ function Home() {
     }, [])
 
     return (
-        <div className="home flex-col">
-            <div className="flex-col">
+        <div className="home flex-col" role="home page">
+            <div className="flex-col" role="input select">
                 <form onSubmit={search}>
                     <input id="search-input" type="search" placeholder="&#61442;    Search for a country..." />
                 </form>
 
-                <select onChange={filter}>
+                <select onChange={filter} aria-label="region">
                     <option value="all">Filter by Region</option>
                     <option value="Africa">Africa</option>
                     <option value="Americas">America</option>
