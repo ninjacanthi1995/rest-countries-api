@@ -25,7 +25,7 @@ export default function Country() {
     }, [code])
 
     return (
-        <div className="country flex-col" role="detail page">
+        <div className="country flex-col" role="landmark">
             <button className="flex" onClick={() => navigate(-1)}>
                 <img src="./arrow_back_black.svg" id="back-icon" />
                 Back
@@ -37,8 +37,8 @@ export default function Country() {
                 <section className="flex-col">
                     <h1>{country.name}</h1>
 
-                    <div className="flex-col" role="text container">
-                        <div role="info">
+                    <div className="flex-col" role="section">
+                        <div role="contentinfo">
                             <p><span>Native Name:</span> {country.nativeName}</p>
                             <p><span>Population:</span> {country.population}</p>
                             <p><span>Region:</span> {country.region}</p>
@@ -46,7 +46,7 @@ export default function Country() {
                             <p><span>Capital:</span> {country.capital}</p>
                         </div>
 
-                        <div role="info">
+                        <div role="contentinfo">
                             <p><span>Top Level Domain:</span> {country.topLevelDomain}</p>
                             <p><span>Currencies:</span> {currencies.join(', ')}</p>
                             <p><span>Languages:</span> {languages.join(', ')}</p>
@@ -54,7 +54,7 @@ export default function Country() {
                     </div>
 
                     <h3>Border Countries:</h3>
-                    <div className="flex borders-container" role="borders">
+                    <div className="flex borders-container" role="section">
                         {borders.map(border => (
                             <button onClick={() => navigate(`/${border.alpha3Code}`)}>{border.name}</button>
                         ))}

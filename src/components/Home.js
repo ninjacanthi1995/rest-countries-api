@@ -40,8 +40,8 @@ function Home() {
     }, [])
 
     return (
-        <div className="home flex-col" role="home page">
-            <div className="flex-col" role="input select">
+        <div className="home flex-col" role="landmark">
+            <div className="flex-col" role="search">
                 <form onSubmit={search}>
                     <input id="search-input" type="search" placeholder="&#61442;    Search for a country..." />
                 </form>
